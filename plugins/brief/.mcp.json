@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "brief": {
+      "type": "http",
+      "url": "https://app.briefhq.ai/mcp"
+    }
+  }
+}

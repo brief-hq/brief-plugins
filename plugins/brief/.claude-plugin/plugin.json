@@ -1,0 +1,22 @@
+{
+  "name": "brief",
+  "version": "1.0.0",
+  "description": "Your Product Navigator in every tool — strategic product context, decisions, and customer insights.",
+  "author": {
+    "name": "Brief",
+    "email": "hello@briefhq.ai",
+    "url": "https://briefhq.ai"
+  },
+  "homepage": "https://briefhq.ai",
+  "repository": "https://github.com/brief-hq/brief-plugins",
+  "license": "ISC",
+  "keywords": [
+    "product-strategy",
+    "decisions",
+    "founder",
+    "knowledge-work",
+    "customer-insights",
+    "navigator"
+  ],
+  "category": "productivity"
+}

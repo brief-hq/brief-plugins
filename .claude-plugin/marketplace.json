@@ -1,0 +1,35 @@
+{
+  "name": "brief-plugins",
+  "owner": {
+    "name": "Brief",
+    "email": "hello@briefhq.ai"
+  },
+  "metadata": {
+    "description": "Brief plugins for Claude Code — your Product Navigator in every tool."
+  },
+  "plugins": [
+    {
+      "name": "brief",
+      "source": "./plugins/brief",
+      "description": "Your Product Navigator in every tool — strategic product context, decisions, and customer insights.",
+      "version": "1.0.0",
+      "author": {
+        "name": "Brief",
+        "email": "hello@briefhq.ai",
+        "url": "https://briefhq.ai"
+      },
+      "homepage": "https://briefhq.ai",
+      "repository": "https://github.com/brief-hq/brief-plugins",
+      "license": "ISC",
+      "keywords": [
+        "product-strategy",
+        "decisions",
+        "founder",
+        "knowledge-work",
+        "customer-insights",
+        "navigator"
+      ],
+      "category": "productivity"
+    }
+  ]
+}
