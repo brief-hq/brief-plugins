@@ -4,7 +4,7 @@ Strategic product context, decisions, and customer insights inside Claude.
 
 ## Install
 
-```
+```text
 /plugin marketplace add brief-hq/brief-plugins
 /plugin install brief@brief-plugins
 ```

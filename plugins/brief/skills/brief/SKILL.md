@@ -29,7 +29,7 @@ Example: `brief_ask({ question: "Should we use Postgres or DynamoDB for primary 
 
 ## When evaluating options or reviewing proposals
 
-Call `brief_ask` with `mode: "decide"` for a definitive recommendation, or `mode: "advise"` for softer guidance. Brief grounds its answer in your org's real data — past decisions, customer feedback, current priorities.
+Call `brief_ask` with `mode: "advise"` for guidance grounded in your org's real data — past decisions, customer feedback, current priorities.
 
 For sub-2-second context checks mid-build, use `mode: "fast"`.
 
@@ -60,7 +60,7 @@ Call `brief_update_product_context` to write company, goals, or persona fields a
 | Tool | Purpose |
 |---|---|
 | `brief_get_onboarding_context` | Primer — load full workspace snapshot (decisions, personas, features, pipeline). Call once at session start. |
-| `brief_ask` | Strategic reasoning, multi-turn, grounded in your org's data. Modes: `check`, `decide`, `advise`, `fast`. |
+| `brief_ask` | Strategic reasoning, multi-turn, grounded in your org's data. Modes: `advise`, `check`, `fast`. |
 | `brief_search` | Keyword search across decisions, documents, personas, features, signals. Filter with `types`. |
 | `brief_browse` | Structured listings of workspace objects. |
 | `brief_record_decision` | Capture a decision with rationale — renders an approval card. |

@@ -15,7 +15,7 @@ Load Brief product context for your company.
    - **Team context** — who's responsible for what, how decisions get made
 
    Send all of this to Brief in one call:
-   `brief_ask "Here's what we're building and who we serve: [context]. What should I know?"`
+   `brief_ask({ question: "Here's what we're building and who we serve. What should I know?", context: "[context]", onboarding: true })`
 
 3. Brief will respond with structured product context and its first insight.
 

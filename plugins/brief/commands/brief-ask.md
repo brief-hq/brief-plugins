@@ -10,10 +10,10 @@ Ask Brief a product question. Brief is your Product Navigator — it knows busin
 
 - `/brief-ask What should we prioritize next quarter?`
 - `/brief-ask --mode check Should we pursue enterprise or SMB first?`
-- `/brief-ask --mode decide What did customers say about the new onboarding flow?`
+- `/brief-ask --mode fast Is this decision already documented?`
 
 ## Modes
 
-- **default** — Strategic conversation grounded in your org's data
+- **advise** (default) — Strategic guidance grounded in your org's data
 - **check** — Validate a direction against existing decisions and customer signals
-- **decide** — Get a definitive recommendation when multiple approaches exist
+- **fast** — Quick, low-latency context checks during active implementation
