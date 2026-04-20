@@ -2,7 +2,7 @@
   "name": "brief-plugins",
   "owner": {
     "name": "Brief",
-    "email": "hello@briefhq.ai"
+    "email": "support@briefhq.ai"
   },
   "metadata": {
     "description": "Brief plugins for Claude Code — your Product Navigator in every tool."
@@ -15,7 +15,7 @@
       "version": "1.0.0",
       "author": {
         "name": "Brief",
-        "email": "hello@briefhq.ai",
+        "email": "support@briefhq.ai",
         "url": "https://briefhq.ai"
       },
       "homepage": "https://briefhq.ai",
