@@ -32,4 +32,4 @@ Brief uses OAuth — no API keys or manual config. On first use, a browser windo
 ## Learn more
 
 - [briefhq.ai](https://briefhq.ai) — Brief product site
-- [docs.briefhq.ai/mcp](https://docs.briefhq.ai/mcp) — MCP integration docs
+- [briefhq.ai/mcp](https://briefhq.ai/mcp/) — MCP integration docs
