@@ -1,6 +1,6 @@
 {
   "mcpServers": {
-    "brief": {
+    "brief-plugin": {
       "type": "http",
       "url": "https://app.briefhq.ai/mcp"
     }

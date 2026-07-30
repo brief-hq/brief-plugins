@@ -12,7 +12,7 @@
       "name": "brief",
       "source": "./plugins/brief",
       "description": "Your Product Navigator in every tool — strategic product context, decisions, and customer insights.",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "author": {
         "name": "Brief",
         "email": "support@briefhq.ai",
