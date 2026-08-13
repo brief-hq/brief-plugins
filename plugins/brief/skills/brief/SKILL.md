@@ -49,7 +49,7 @@ Use `brief_ask` for judgment calls, not for data retrieval.
 
 ## Multi-turn conversations
 
-Capture `conversation_id` from the first `brief_ask` response and pass it to subsequent calls in the same thread so Brief maintains context across turns.
+Brief automatically continues the current MCP coding-session conversation when `conversation_id` is omitted. Pass an explicit `conversation_id` for a one-off override, or `new_conversation: true` to start a fresh default conversation. Stateful responses include `coding_session_key`; pass it as a decision `isolation_key` only when the decision should remain scoped to this coding session. Fast mode is stateless.
 
 ## Update product context
 
@@ -74,11 +74,26 @@ Call `brief_update_product_context` to write company, goals, or persona fields a
 
 If the MCP host supports prompts, the server also registers `brief-setup`, `brief-welcome-back`, and `brief-context`. Users can invoke these from the host's prompt picker as shortcuts for the flows above.
 
+## CLI fallback
+
+Use this only when the Brief MCP server is unavailable. Discover the complete shell surface with `brief manifest --json`; these common commands include the current pagination, isolation, and document-creation requirements.
+
+```bash
+brief decisions search "<query>" --offset 0 --isolation <key> --json
+brief decisions get <decision-id> --isolation <key> --json
+brief decisions create --decision "..." --rationale "..." --expires-when "..." --isolation <key> --json
+brief signals list --order-by created_at --order desc --json
+brief conversations list --cursor <cursor> --source agent --json
+brief docs list --page 1 --json
+brief docs create --title "..." --folder <folder-id> --content "..." --json
+brief workspace list --json
+```
+
 ## Rules
 
 - Call `brief_get_onboarding_context` once at session start before reasoning about the user's product.
 - Use `brief_ask` for judgment; use `brief_search` / `brief_browse` for factual lookups.
-- Capture `conversation_id` from the first `brief_ask` response and reuse it on subsequent calls in the same thread.
+- Let `brief_ask` reuse the current coding-session conversation by default; use `conversation_id` only to override it or `new_conversation: true` to start fresh.
 - Record non-trivial decisions in Brief — do not leave them in conversation memory.
 - Never construct Brief web URLs by hand. Use `workspace_url` and per-object `view_url` fields from tool responses.
 - These are **MCP tools**, not shell commands. Do not shell out to `brief ask` / `brief context` / `brief decisions` — that is the CLI channel, which lives behind a different install path (`brief init`).

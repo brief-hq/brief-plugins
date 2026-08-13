@@ -6,6 +6,8 @@ Ask Brief a product question. Brief is your Product Navigator — it knows busin
 
 `/brief-ask <question>`
 
+Calls continue the current MCP coding-session conversation by default. Start fresh with `new_conversation: true`, or pass an explicit `conversation_id` as a one-off override that leaves the default in place; fast mode is stateless.
+
 ## Examples
 
 - `/brief-ask What should we prioritize next quarter?`
