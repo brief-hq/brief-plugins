@@ -53,7 +53,7 @@ Brief automatically continues the current MCP coding-session conversation when `
 
 ## Update product context
 
-Call `brief_update_product_context` to write company, goals, or persona fields as the user shares them. Prefer silent updates during onboarding over announcing each write.
+Call `brief_update_product_context` to write the product address, company, goals, or persona fields as the user shares them. Prefer silent updates during onboarding over announcing each write.
 
 ## Available MCP tools
 
@@ -66,7 +66,7 @@ Call `brief_update_product_context` to write company, goals, or persona fields a
 | `brief_record_decision` | Capture a decision with rationale — renders an approval card. |
 | `brief_confirm_decision` / `brief_reject_decision` / `brief_archive_decision` | Lifecycle actions on decisions. |
 | `brief_list_pending_decisions` | Decisions awaiting approval. |
-| `brief_update_product_context` | Write company, goals, or persona fields. |
+| `brief_update_product_context` | Write the product address, company, goals, or persona fields. |
 | `brief_execute_operation` | Escape hatch for operations without a direct tool — prefer direct tools when available. |
 | `brief_report_progress` / `brief_report_completion` | Send phase updates and completion status for in-flight coding tasks. |
 
