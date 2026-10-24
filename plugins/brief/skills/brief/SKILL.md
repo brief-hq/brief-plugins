@@ -29,7 +29,7 @@ Example: `brief_ask({ question: "Should we use Postgres or DynamoDB for primary 
 
 ## When evaluating options or reviewing proposals
 
-Call `brief_ask` with `mode: "advise"` for guidance grounded in your org's real data — past decisions, customer feedback, current priorities.
+Call `brief_ask` with `mode: "check"` to validate a direction against existing decisions, or `mode: "advise"` (the default) for open-ended guidance. Brief grounds its answer in your org's real data — past decisions, customer feedback, current priorities.
 
 For sub-2-second context checks mid-build, use `mode: "fast"`.
 
