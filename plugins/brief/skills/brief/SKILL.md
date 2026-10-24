@@ -45,11 +45,13 @@ Before recommending, recording or proposing a decision, apply the decision stand
 
 When a settled choice meets the decision standard above and the user is making it right now, record it via `brief_record_decision` with the decision and rationale. Brief renders a decision approval card so the user can approve, edit, or reject before it is persisted — this is the preferred path for a decision the user is confirming themselves. (It also supports `status: 'pending'` for proposing to someone else, but only on hosts that render that card — on other hosts it writes nothing.)
 
+On hosts that do not render approval cards, use `brief_propose_decision` to save the eligible choice for review instead.
+
 When a decision needs **someone else's** sign-off, or isn't settled yet, use `brief_propose_decision` instead — it writes a pending proposal immediately, no card required, on any host. **Never record an unsettled decision as confirmed; propose the intended lasting rule as a declarative statement for review.** If multiple people must sign off, propose once per approver.
 
 Example: asked to "get sign-off from Drew on offering a free plan," call `brief_propose_decision({ decision: "Offer a free plan", rationale: "Small teams need to try the product before paying.", assigned_to_email: "drew@example.com" })` — not `brief_record_decision`.
 
-If an eligible lasting rule applies only to an experiment, pass `isolation_key` with that experiment’s identifier and use the same key on reads. Promote it to shared context only when appropriate, via `brief_execute_operation` with `operation: "update_decision"` and `isolation_key: null`.
+If an eligible lasting rule applies only to an experiment, pass `isolation_key` with that experiment’s identifier and use the same key on reads. Promote it only when approved for shared context, via `brief_execute_operation` with `operation: "update_decision"` and `parameters: { id: "<decision-id>", isolation_key: null }`.
 
 Do not store product decisions in conversation memory. Conversation memory is local and ephemeral; Brief is shared and permanent.
 
