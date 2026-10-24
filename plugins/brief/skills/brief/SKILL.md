@@ -51,7 +51,7 @@ When a decision needs **someone else's** sign-off, or isn't settled yet, use `br
 
 Example: asked to "get sign-off from Drew on offering a free plan," call `brief_propose_decision({ decision: "Offer a free plan", rationale: "Small teams need to try the product before paying.", assigned_to_email: "drew@example.com" })` — not `brief_record_decision`.
 
-If an eligible lasting rule applies only to an experiment, pass `isolation_key` with that experiment’s identifier and use the same key on reads. With the CLI, pass `--isolation <key>` on those reads and writes, or `--session <id>` for a coding-session scope. Promote it only when approved for shared context: use `brief decisions promote <decision-id>` on the CLI, or `brief_execute_operation` with `operation: "update_decision"` and `parameters: { id: "<decision-id>", isolation_key: null }` on MCP.
+If an eligible lasting rule applies only to an experiment, pass `isolation_key` with that experiment’s identifier and use the same key on reads. Promote it only when approved for shared context, via `brief_execute_operation` with `operation: "update_decision"` and `parameters: { id: "<decision-id>", isolation_key: null }`.
 
 Do not store product decisions in conversation memory. Conversation memory is local and ephemeral; Brief is shared and permanent.
 
@@ -91,7 +91,9 @@ If the MCP host supports prompts, the server also registers `brief-setup`, `brie
 
 ## CLI fallback
 
-`brief decisions create` records as confirmed immediately and has no approval card. Use it only after the current user explicitly authorizes recording that settled choice; otherwise propose it for review.
+For an eligible rule limited to an experiment, pass `--isolation <key>` on CLI reads and writes, or `--session <id>` for a coding-session scope. Once approved for shared context, use the promotion command below.
+
+The `create` command records as confirmed immediately and has no approval card. Use it only after the current user explicitly authorizes recording that settled choice; otherwise propose it for review.
 
 Use this only when the Brief MCP server is unavailable. Discover the complete shell surface with `brief manifest --json`; these common commands include the current pagination, isolation, and document-creation requirements.
 
@@ -102,6 +104,7 @@ brief decisions search "<query>" --offset 0 --isolation <key> --json
 brief decisions get <decision-id> --isolation <key> --json
 brief decisions create --decision "..." --rationale "..." --expires-when "..." --json
 brief decisions propose --decision "..." --rationale "..." --assignee <email> --json
+brief decisions promote <decision-id> --json
 brief signals list --order-by created_at --order desc --json
 brief conversations list --cursor <cursor> --source agent --json
 brief docs list --page 1 --json
