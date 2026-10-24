@@ -41,11 +41,11 @@ Session isolation does not make ticket notes eligible decisions.
 
 ## Capture decisions
 
-Apply the decision standard above before every record or proposal.
+Before recommending, recording or proposing a decision, apply the decision standard above.
 
 When a settled choice meets the decision standard above and the user is making it right now, record it via `brief_record_decision` with the decision and rationale. Brief renders a decision approval card so the user can approve, edit, or reject before it is persisted — this is the preferred path for a decision the user is confirming themselves. (It also supports `status: 'pending'` for proposing to someone else, but only on hosts that render that card — on other hosts it writes nothing.)
 
-When a decision needs **someone else's** sign-off, or isn't settled yet, use `brief_propose_decision` instead — it writes a pending proposal immediately, no card required, on any host. **Never record an unsettled decision as confirmed and phrase it as a question instead — propose it.** If multiple people must sign off, propose once per approver.
+When a decision needs **someone else's** sign-off, or isn't settled yet, use `brief_propose_decision` instead — it writes a pending proposal immediately, no card required, on any host. **Never record an unsettled decision as confirmed; propose the intended lasting rule as a declarative statement for review.** If multiple people must sign off, propose once per approver.
 
 Example: asked to "get sign-off from Drew on offering a free plan," call `brief_propose_decision({ decision: "Offer a free plan", rationale: "Small teams need to try the product before paying.", assigned_to_email: "drew@example.com" })` — not `brief_record_decision`.
 
@@ -86,6 +86,8 @@ Call `brief_update_product_context` to write the product address, company, goals
 If the MCP host supports prompts, the server also registers `brief-setup`, `brief-welcome-back`, and `brief-context`. Users can invoke these from the host's prompt picker as shortcuts for the flows above.
 
 ## CLI fallback
+
+`brief decisions create` records as confirmed immediately and has no approval card. Use it only after the current user explicitly authorizes recording that settled choice; otherwise propose it for review.
 
 Use this only when the Brief MCP server is unavailable. Discover the complete shell surface with `brief manifest --json`; these common commands include the current pagination, isolation, and document-creation requirements.
 
