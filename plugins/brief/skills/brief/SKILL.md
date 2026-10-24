@@ -35,7 +35,7 @@ For sub-2-second context checks mid-build, use `mode: "fast"`.
 
 ## Decision standard
 
-A decision is a rule or choice that will still guide someone after the ticket ships. Ask: "Will this still guide someone after this ticket ships?" State it in plain language in 1–3 sentences, understandable without the ticket, PR or code, and explain why in product or business terms. A durable choice not to build something also counts when its product or business reason survives the ticket. Keep ticket-scoped notes in the ticket, PR description or a code comment. Keep file paths, function names, flags and run IDs out of decision text; put ticket, PR and decision IDs only in references. When a tool has no references field, keep reference links in the originating ticket or PR and omit IDs from the decision and rationale.
+A decision is a rule or choice that will still guide someone after the ticket ships. Ask: "Will this still guide someone after this ticket ships?" State it in plain language in 1–3 sentences, understandable without the ticket, PR or code, and explain why in product or business terms. A durable choice not to build something also counts when its product or business reason survives the ticket. Keep ticket-scoped notes in the ticket, PR description or a code comment. Keep file paths, branch names, function names, flags and run IDs out of decision text; put ticket, PR and decision IDs only in references. When a tool has no references field, keep reference links in the originating ticket or PR and omit IDs from the decision and rationale.
 
 Session isolation does not make ticket notes eligible decisions.
 
@@ -51,7 +51,7 @@ When a decision needs **someone else's** sign-off, or isn't settled yet, use `br
 
 Example: asked to "get sign-off from Drew on offering a free plan," call `brief_propose_decision({ decision: "Offer a free plan", rationale: "Small teams need to try the product before paying.", assigned_to_email: "drew@example.com" })` — not `brief_record_decision`.
 
-If an eligible lasting rule applies only to an experiment, pass `isolation_key` with that experiment’s identifier and use the same key on reads. Promote it only when approved for shared context, via `brief_execute_operation` with `operation: "update_decision"` and `parameters: { id: "<decision-id>", isolation_key: null }`.
+If an eligible lasting rule applies only to an experiment, pass `isolation_key` with that experiment’s identifier and use the same key on reads. With the CLI, pass `--isolation <key>` on those reads and writes, or `--session <id>` for a coding-session scope. Promote it only when approved for shared context: use `brief decisions promote <decision-id>` on the CLI, or `brief_execute_operation` with `operation: "update_decision"` and `parameters: { id: "<decision-id>", isolation_key: null }` on MCP.
 
 Do not store product decisions in conversation memory. Conversation memory is local and ephemeral; Brief is shared and permanent.
 
@@ -95,10 +95,12 @@ If the MCP host supports prompts, the server also registers `brief-setup`, `brie
 
 Use this only when the Brief MCP server is unavailable. Discover the complete shell surface with `brief manifest --json`; these common commands include the current pagination, isolation, and document-creation requirements.
 
+The decision write examples below use shared organization context when no session scope is configured.
+
 ```bash
 brief decisions search "<query>" --offset 0 --isolation <key> --json
 brief decisions get <decision-id> --isolation <key> --json
-brief decisions create --decision "..." --rationale "..." --expires-when "..." --isolation <key> --json
+brief decisions create --decision "..." --rationale "..." --expires-when "..." --json
 brief decisions propose --decision "..." --rationale "..." --assignee <email> --json
 brief signals list --order-by created_at --order desc --json
 brief conversations list --cursor <cursor> --source agent --json
