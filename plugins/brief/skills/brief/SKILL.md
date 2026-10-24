@@ -51,7 +51,7 @@ When a decision needs **someone else's** sign-off, or isn't settled yet, use `br
 
 Example: asked to "get sign-off from Drew on offering a free plan," call `brief_propose_decision({ decision: "Offer a free plan", rationale: "Small teams need to try the product before paying.", assigned_to_email: "drew@example.com" })` — not `brief_record_decision`.
 
-If an eligible lasting rule applies only to an experiment, pass `isolation_key` with that experiment’s identifier and use the same key on reads. Promote it only when approved for shared context, via `brief_execute_operation` with `operation: "update_decision"` and `parameters: { id: "<decision-id>", isolation_key: null }`.
+If an eligible lasting rule applies only to an experiment, pass `isolation_key` with that experiment’s identifier and use the same key on reads via `brief_execute_operation` with `operation: "search_decisions"` and `parameters: { isolation_key: "<key>" }`. The direct `brief_search` tool does not accept an explicit isolation key. Promote it only when approved for shared context, via `brief_execute_operation` with `operation: "update_decision"` and `parameters: { id: "<decision-id>", isolation_key: null }`.
 
 Do not store product decisions in conversation memory. Conversation memory is local and ephemeral; Brief is shared and permanent.
 
