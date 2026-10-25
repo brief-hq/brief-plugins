@@ -9,6 +9,7 @@ Public-repo tree for the Brief marketplace on Claude Code. This directory is mir
 
 ## Source of truth
 
-The plugin content (`plugin.json`, `.mcp.json`, commands, skill, icon, README) is a mirror of `packages/claude-plugin/` in this monorepo. Edit there, not here.
-
-Parity between `packages/claude-plugin/` and `packages/brief-plugins-scaffold/plugins/brief/` is enforced in **BRI-2840**.
+Maintainers keep this published content aligned with the canonical Claude plugin
+and public-repo scaffold in Brief's private engineering repository. This public
+repository does not contain those source directories. Parity checks run in the
+engineering repository; pair mirror updates with the corresponding source change.
