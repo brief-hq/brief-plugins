@@ -1,0 +1,59 @@
+{
+  "tools": [
+    {
+      "name": "brief_ask",
+      "description": "Ask Brief for strategic product guidance. Use mode check to validate a direction against existing decisions.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "question": { "type": "string" },
+          "context": { "type": "string" },
+          "mode": { "type": "string", "enum": ["advise", "check", "fast"] },
+          "onboarding": { "type": "boolean" }
+        }
+      }
+    },
+    {
+      "name": "brief_get_onboarding_context",
+      "description": "Load the user's Brief product context before reasoning about their product.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "scope": { "type": "string", "enum": ["identity", "product", "full"] }
+        }
+      }
+    },
+    {
+      "name": "brief_search",
+      "description": "Search Brief for a specific ticket, decision, document, feature, persona, or signal.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "query": { "type": "string" },
+          "types": { "type": "string" },
+          "limit": { "type": "integer", "minimum": 1, "maximum": 50 }
+        },
+        "required": ["query"]
+      }
+    },
+    {
+      "name": "brief_record_decision",
+      "description": "Record a decision now with an approval card; only proposes via status: pending on hosts that render that card — on any other host, use brief_propose_decision instead.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "decision": { "type": "string" },
+          "rationale": { "type": "string" },
+          "status": {
+            "type": "string",
+            "description": "Use confirmed (the default) for a decision the user made. Use pending only to propose a decision for someone else to confirm later. Either status still opens the approval card before persistence.",
+            "enum": ["confirmed", "pending"]
+          },
+          "topic": { "type": "string" },
+          "tags": { "type": "array", "items": { "type": "string" } }
+        },
+        "required": ["decision", "rationale"]
+      }
+    }
+  ]
+}

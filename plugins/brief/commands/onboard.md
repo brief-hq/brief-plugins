@@ -1,3 +1,7 @@
+---
+description: Load your organization's product context from Brief before coding
+---
+
 # Brief Onboard
 
 Load Brief product context for your company.
@@ -21,4 +25,4 @@ Load Brief product context for your company.
 
 ## Usage
 
-`/brief-onboard`
+`/brief:onboard`

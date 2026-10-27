@@ -1,0 +1,46 @@
+{
+  "schemaVersion": 1,
+  "measuredAt": "2026-09-11",
+  "claudeCodeVersion": "2.1.269",
+  "model": "claude-sonnet-5",
+  "judgeModel": null,
+  "runsPerArm": 3,
+  "maxCostUsd": 5,
+  "thresholds": {
+    "minimumOverallScore": 0.9,
+    "minimumCaseScore": 0.8,
+    "minimumMeanDelta": 0.75,
+    "maximumRegression": 0.05
+  },
+  "scores": {
+    "withPlugin": 1,
+    "withoutPlugin": 0,
+    "delta": 1
+  },
+  "cases": {
+    "ask-product-direction": {
+      "behavior": "Explicit /brief:ask command",
+      "withPlugin": 1,
+      "withoutPlugin": 0,
+      "delta": 1
+    },
+    "find-ticket-context": {
+      "behavior": "Natural-language ticket lookup",
+      "withPlugin": 1,
+      "withoutPlugin": 0,
+      "delta": 1
+    },
+    "onboard-before-coding": {
+      "behavior": "Explicit /brief:onboard command",
+      "withPlugin": 1,
+      "withoutPlugin": 0,
+      "delta": 1
+    },
+    "record-product-decision": {
+      "behavior": "Natural-language decision capture",
+      "withPlugin": 1,
+      "withoutPlugin": 0,
+      "delta": 1
+    }
+  }
+}

@@ -1,18 +1,25 @@
+---
+description: Ask Brief a product question grounded in your organization's context
+argument-hint: <question>
+---
+
 # Brief Ask
 
 Ask Brief a product question. Brief is your Product Navigator — it knows business context, customer insights, and strategic decisions that live outside any single document.
 
 ## Usage
 
-`/brief-ask <question>`
+`/brief:ask <question>`
 
 Calls continue the current MCP coding-session conversation by default. Start fresh with `new_conversation: true`, or pass an explicit `conversation_id` as a one-off override that leaves the default in place; fast mode is stateless.
 
+Summarize the returned recommendation and rationale, then finish. Do not save product guidance to local conversation memory.
+
 ## Examples
 
-- `/brief-ask What should we prioritize next quarter?`
-- `/brief-ask --mode check Should we pursue enterprise or SMB first?`
-- `/brief-ask --mode fast Is this decision already documented?`
+- `/brief:ask What should we prioritize next quarter?`
+- `/brief:ask --mode check Should we pursue enterprise or SMB first?`
+- `/brief:ask --mode fast Is this decision already documented?`
 
 ## Modes
 
