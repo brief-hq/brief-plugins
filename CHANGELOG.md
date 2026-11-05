@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.0.4 — 2026-11-04
+
+- BRI-2576: Route named workspace reads and writes through separate MCP tools.
+
 ## Unreleased
 
 - Document default MCP Ask continuity and opt-in decision isolation through the

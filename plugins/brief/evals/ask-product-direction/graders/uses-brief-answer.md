@@ -1,5 +1,5 @@
 ---
 type: regex
-pattern: 'packaging and command semantics'
+pattern: 'packaging\s*(?:and|&|/|,)\s*command semantics'
 flags: i
 ---

@@ -55,7 +55,7 @@ When a decision needs **someone else's** sign-off, or isn't settled yet, use `br
 
 Example: asked to "get sign-off from Drew on offering a free plan," call `brief_propose_decision({ decision: "Offer a free plan", rationale: "Small teams need to try the product before paying.", assigned_to_email: "drew@example.com" })` — not `brief_record_decision`.
 
-If an eligible lasting rule applies only to an experiment, pass `isolation_key` with that experiment’s identifier and use the same key on reads via `brief_execute_operation` with `operation: "search_decisions"` and `parameters: { isolation_key: "<key>" }`. The direct `brief_search` tool does not accept an explicit isolation key. Leave isolated decisions unchanged and ask a person to review any request to make them shared.
+If an eligible lasting rule applies only to an experiment, pass `isolation_key` with that experiment’s identifier and use the same key on reads via `brief_read_operation` with `operation: "search_decisions"` and `parameters: { isolation_key: "<key>" }`. The direct `brief_search` tool does not accept an explicit isolation key. Leave isolated decisions unchanged and ask a person to review any request to make them shared.
 
 Do not store product decisions in conversation memory. Conversation memory is local and ephemeral; Brief is shared and permanent.
 
@@ -86,7 +86,8 @@ Call `brief_update_product_context` to write the product address, company, goals
 | `brief_confirm_decision` / `brief_reject_decision` / `brief_archive_decision` | Lifecycle actions on decisions. `confirm`/`reject` also accept a pending decision suggestion's uuid; approving one still requires a web session or verified Slack/Teams turn. |
 | `brief_list_pending_decisions` | Decisions awaiting approval, plus pending decision suggestions (tagged `source`). |
 | `brief_update_product_context` | Write the product address, company, goals, or persona fields. |
-| `brief_execute_operation` | Escape hatch for operations without a direct tool — prefer direct tools when available. |
+| `brief_read_operation` | Read operations without a dedicated tool. |
+| `brief_write_operation` | Write operations without a dedicated tool; decision writes save immediately. |
 | `brief_report_progress` / `brief_report_completion` | Send phase updates and completion status for in-flight coding tasks. |
 
 ## MCP prompts
