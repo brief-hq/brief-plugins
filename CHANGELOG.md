@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.0.6 — 2026-11-06
+
+- Set the Claude listing icon.
+
 ## 1.0.5 — 2026-11-05
 
 - Set the Claude listing publisher to Brief Labs Inc. and add documentation, support, privacy, and terms links.
