@@ -3,9 +3,9 @@ name: brief
 description: Product context, decisions, and strategic reasoning via the Brief MCP server. Use when starting a task, making architectural decisions, or needing product knowledge.
 ---
 
-# Brief — Product Navigator
+# Brief — Product Strategy Agent
 
-Brief holds the business context, customer insights, and strategic decisions that live outside any single document or conversation. It exposes that knowledge to this agent through the Brief MCP server.
+Brief is a product strategy agent that answers from the workspace's decisions, personas, strategy, customers, and competitive landscape. Use the Brief MCP server to ask questions and access workspace context.
 
 This skill teaches you **when** to call Brief MCP tools. The tool descriptions surfaced during the MCP handshake teach you **how** to call each one.
 
@@ -19,7 +19,7 @@ Call `brief_get_onboarding_context` once at the beginning of a session. It retur
 
 This is the canonical first-contact tool. Do not use `brief_search` or `brief_ask` as a substitute — search is for finding one specific thing, ask is for strategic reasoning **after** context is loaded.
 
-If Brief has no context yet, send the user's framing to `brief_ask` with `onboarding: true` and a bounded `context` payload: prioritize the package manifest + `git log --oneline -20`, then add a trimmed README excerpt if space allows. Brief synthesizes product context and responds with its first strategic insight.
+If Brief has no context yet, ask the user for their product framing and any package manifest, recent commit summary, or README excerpt they want to share. Send that context to `brief_ask` with `onboarding: true` and a bounded `context` payload. Brief synthesizes product context and responds with its first strategic insight.
 
 ## Before strategic decisions
 
@@ -51,7 +51,7 @@ When a settled choice meets the decision standard above and the user is making i
 
 On hosts that do not render approval cards, use `brief_propose_decision` to save the eligible choice for review instead.
 
-When a decision needs **someone else's** sign-off, or isn't settled yet, use `brief_propose_decision` instead — it writes a pending proposal immediately, no card required, on any host. **Never record an unsettled decision as confirmed; propose the intended lasting rule as a declarative statement for review.** If multiple people must sign off, propose once per approver.
+When a decision needs **someone else's** sign-off, or isn't settled yet, use `brief_propose_decision` instead — it writes a pending proposal immediately, no card required, on any host. **Never record an unsettled decision as confirmed; propose the intended lasting rule as a declarative statement for review.** If multiple people must sign off, propose once per approver (one proposal per `assigned_to_email`).
 
 Example: asked to "get sign-off from Drew on offering a free plan," call `brief_propose_decision({ decision: "Offer a free plan", rationale: "Small teams need to try the product before paying.", assigned_to_email: "drew@example.com" })` — not `brief_record_decision`.
 
@@ -78,7 +78,7 @@ Call `brief_update_product_context` to write the product address, company, goals
 | Tool | Purpose |
 |---|---|
 | `brief_get_onboarding_context` | Primer — load full workspace snapshot (decisions, personas, features, pipeline). Call once at session start. |
-| `brief_ask` | Strategic reasoning, multi-turn, grounded in your org's data. Modes: `advise`, `check`, `fast`. |
+| `brief_ask` | Strategic reasoning, multi-turn, grounded in your org's data. Modes: `advise` (default), `check`, `fast`. |
 | `brief_search` | Keyword search across decisions, documents, personas, features, signals. Filter with `types`. |
 | `brief_browse` | Structured listings of workspace objects. |
 | `brief_record_decision` | Record a decision now with rationale — renders an approval card; only proposes via `status: 'pending'` on hosts that render it. |
@@ -94,27 +94,7 @@ Call `brief_update_product_context` to write the product address, company, goals
 
 If the MCP host supports prompts, the server also registers `brief-setup`, `brief-welcome-back`, and `brief-context`. Users can invoke these from the host's prompt picker as shortcuts for the flows above.
 
-## CLI fallback
-
-For an eligible rule limited to an experiment, pass `--isolation <key>` on CLI reads and writes, or `--session <id>` for a coding-session scope.
-
-The `create` command records as confirmed immediately and has no approval card. Use it only after the current user explicitly authorizes recording that settled choice; otherwise ask whether to record it or propose it for review.
-
-Use this only when the Brief MCP server is unavailable. Discover the complete shell surface with `brief manifest --json`; these common commands include the current pagination, isolation, and document-creation requirements.
-
-The decision write examples below use shared organization context when no session scope is configured.
-
-```bash
-brief decisions search "<query>" --offset 0 --isolation <key> --json
-brief decisions get <decision-id> --isolation <key> --json
-brief decisions create --decision "..." --rationale "..." --expires-when "..." --json
-brief decisions propose --decision "..." --rationale "..." --assignee <email> --json
-brief signals list --order-by created_at --order desc --json
-brief conversations list --cursor <cursor> --source agent --json
-brief docs list --page 1 --json
-brief docs create --title "..." --folder <folder-id> --content "..." --json
-brief workspace list --json
-```
+If the Brief MCP server is unavailable, tell the user to reconnect the plugin.
 
 ## Rules
 

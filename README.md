@@ -1,16 +1,23 @@
-# brief-plugins (scaffold)
+# Brief plugins for Claude Code
 
-Public-repo tree for the Brief marketplace on Claude Code. This directory is mirrored to [`brief-hq/brief-plugins`](https://github.com/brief-hq/brief-plugins), the repo users install via:
+This marketplace provides the Brief plugin for Claude Code and Cowork.
+
+Brief is a product strategy agent that answers from the workspace's decisions, personas, strategy, customers, and competitive landscape.
+
+## Install
+
+In Claude Code:
 
 ```text
 /plugin marketplace add brief-hq/brief-plugins
 /plugin install brief@brief-plugins
 ```
 
-## Source of truth
+In Cowork or Claude Desktop, open **Customize > Plugins**, select **Add > Add marketplace**, choose **Add from a repository**, and enter `brief-hq/brief-plugins`. Then add Brief from that marketplace.
 
-The `brief-hq/brief` engineering repository owns `packages/claude-plugin` and
-`packages/brief-plugins-scaffold`; this README is included in the scaffold and its
-public mirror. The published `brief-hq/brief-plugins` repository contains the plugin
-files, not those monorepo directories. Run parity checks in the engineering
-repository, and pair public mirror updates with the corresponding source changes.
+Sign in to your Brief workspace when prompted.
+
+- [Documentation](https://usebrief.com/docs/mcp-setup/)
+- [Privacy policy](https://usebrief.com/privacy-policy/)
+- [Terms of service](https://usebrief.com/terms-of-service/)
+- [Support](https://usebrief.com/support/)

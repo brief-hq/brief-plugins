@@ -1,24 +1,24 @@
 {
   "name": "brief-plugins",
   "owner": {
-    "name": "Brief",
+    "name": "Brief Labs Inc.",
     "email": "support@briefhq.ai"
   },
   "metadata": {
-    "description": "Brief plugins for Claude Code — your Product Navigator in every tool."
+    "description": "Brief plugins for Claude Code. Brief is a product strategy agent that answers from the workspace's decisions, personas, strategy, customers, and competitive landscape."
   },
   "plugins": [
     {
       "name": "brief",
       "source": "./plugins/brief",
-      "description": "Your Product Navigator in every tool — strategic product context, decisions, and customer insights.",
-      "version": "1.0.4",
+      "description": "Brief is a product strategy agent that answers from the workspace's decisions, personas, strategy, customers, and competitive landscape.",
+      "version": "1.0.5",
       "author": {
-        "name": "Brief",
+        "name": "Brief Labs Inc.",
         "email": "support@briefhq.ai",
-        "url": "https://briefhq.ai"
+        "url": "https://usebrief.com"
       },
-      "homepage": "https://briefhq.ai",
+      "homepage": "https://usebrief.com",
       "repository": "https://github.com/brief-hq/brief-plugins",
       "license": "ISC",
       "keywords": [
@@ -26,8 +26,7 @@
         "decisions",
         "founder",
         "knowledge-work",
-        "customer-insights",
-        "navigator"
+        "customer-insights"
       ],
       "category": "productivity"
     }

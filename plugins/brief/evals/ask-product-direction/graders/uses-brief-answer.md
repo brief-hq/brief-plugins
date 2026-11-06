@@ -1,5 +1,5 @@
 ---
 type: regex
-pattern: 'packaging\s*(?:and|&|/|,)\s*command semantics'
+pattern: '(?<!(?:\bnot\b|n\Wt\b|\bnever\b|\bcannot\b)\s+(?:really\s+|actually\s+)?(?:have|has|had|use|need)\s+(?:\w+\s+){0,2}|\bno\s+(?:\w+\s+){0,2})packaging\s*(?:and|&|/|,)\s*command semantics|(?<!\bnot\s|n.t\s)\bpackage\s+and\s+interpret\s+commands\s+differently|^(?=[\s\S]*\bscaffold\b)(?![\s\S]*(?:(?:\bnot\b|n\Wt\b|\bnever\b|\bcannot\b)\s+(?:\w+\s+){0,2}?(?:the\s+)?(?:shipped\s+)?(?:claude\s+)?scaffold|\b(?:skip\w*|exclud\w*|avoid\w*|drop\w*|rather\s+than|instead\s+of)\s+(?:\w+\s+){0,3}?scaffold))(?![\s\S]*(?<!\bnot\s|\bthan\s)\b(?:cover\w*|evaluat\w*|test\w*|includ\w*|check\w*)\s+(?:every|each|all)\b[^.;:\n]*\bplugins?\b)[\s\S]*?(?:^|[.;:\n])(?![^.;:\n]*(?:\bnot\b(?!\s+(?:just|only)\b)|n\Wt\b|\bno\b|\bnever\b|\bcannot\b|\bsame\b|\bidentical\w*|\balike\b|\bsimilar\w*|\bequivalent\w*|\bshared\b))(?=[^.;:\n]*\b(?:clients?|claude)\b)(?=[^.;:\n]*packag)(?=[^.;:\n]*\bcommand)(?=[^.;:\n]*(?:(?:packag|command)\w*(?:(?!,|\b(?:so|but|while|whereas|because|then)\b)[^.;:\n]){0,60}?\b(?:differ\w*|distinct|var(?:y|ying|ies|ied))\b|\b(?:differ\w*|distinct|var(?:y|ying|ies|ied))\b(?:(?!,|\b(?:so|but|while|whereas|because|then)\b)[^.;:\n]){0,30}?(?:packag|command)))'
 flags: i
 ---

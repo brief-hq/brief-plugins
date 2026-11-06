@@ -1,5 +1,12 @@
 # Changelog
 
+## 1.0.5 — 2026-11-05
+
+- Set the Claude listing publisher to Brief Labs Inc. and add documentation, support, privacy, and terms links.
+- Describe Brief as a product strategy agent grounded in workspace context.
+- Move maintainer evaluation instructions to the monorepo docs and keep published READMEs focused on users.
+- Remove Claude shell fallback and CLI consultation instructions; ask users to reconnect when MCP is unavailable.
+
 ## 1.0.4 — 2026-11-04
 
 - BRI-2576: Route named workspace reads and writes through separate MCP tools.

@@ -5,7 +5,7 @@ argument-hint: <question>
 
 # Brief Ask
 
-Ask Brief a product question. Brief is your Product Navigator — it knows business context, customer insights, and strategic decisions that live outside any single document.
+Ask Brief a product question. Brief is a product strategy agent that answers from the workspace's decisions, personas, strategy, customers, and competitive landscape.
 
 ## Usage
 
